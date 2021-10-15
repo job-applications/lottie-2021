@@ -1,7 +1,6 @@
 import { pipeWith } from 'pipe-ts';
 import propertiesDb from './listings.json';
-
-const PER_PAGE = 20;
+import { PER_PAGE } from '../../../config';
 
 const propertiesArr = Object.keys(propertiesDb).map(key => {
   return  { key, data: propertiesDb[key] };
@@ -31,9 +30,9 @@ export default function handler(req, res) {
     filters.push(filterGreenerChoice());
   }
 
-  const filtered = pipeWith(propertiesArr, ...filters);
+  const filtered = filters.length > 0 ? pipeWith(propertiesArr, ...filters) : propertiesArr;
   const startAt = offset % PER_PAGE === 0 ? offset : 0;
-  const endAt = offset + PER_PAGE;
+  const endAt = (offset || 0) + PER_PAGE;
 
   res.status(200).json({
     total: filtered.length,

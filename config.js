@@ -8,3 +8,5 @@ export const regions = [
 ];
 
 export const priceRange = { minPrice: 773.84, maxPrice: 1955 };
+
+export const PER_PAGE = 20;

@@ -1,10 +1,36 @@
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import List from '../components/Results/List';
 import Search from '../components/Search/Search';
+import { PER_PAGE } from '../config';
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(event.target[0].value);
+    router.push({
+      pathname: '/',
+      query: {
+        region: event.target[0].value,
+      },
+    })
+  };
+
+  const handlePagination = (event, page) => {
+    event.preventDefault();
+    router.push({
+      pathname: '/',
+      query: {
+        ...router.query,
+        offset: (page - 1) * PER_PAGE,
+      },
+    });
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 max-w-7xl">
       <Head>
         <title>Lottie - Search Results</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,12 +42,13 @@ export default function Home() {
           Search Results
         </h1>
 
-        <Search />
+        <Search onSubmit={handleSubmit} />
 
         <h2 className="text-3xl font-bold mt-10">
           List of Properties
         </h2>
-        <List />
+
+        <List params={router.query} onPagination={handlePagination} />
       </main>
 
       <footer className="flex items-center justify-center w-full h-24 border-t">
