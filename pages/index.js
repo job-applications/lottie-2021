@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import List from '../components/Results/List';
-import Search from '../components/Results/Search';
+import Search from '../components/Search/Search';
 
 export default function Home() {
   return (
