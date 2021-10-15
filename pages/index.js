@@ -7,14 +7,11 @@ import { PER_PAGE } from '../config';
 export default function Home() {
   const router = useRouter();
 
-  const handleSubmit = event => {
+  const handleSubmit = (event, query) => {
     event.preventDefault();
-    console.log(event.target[0].value);
     router.push({
       pathname: '/',
-      query: {
-        region: event.target[0].value,
-      },
+      query,
     })
   };
 
