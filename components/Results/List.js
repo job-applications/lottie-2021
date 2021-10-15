@@ -20,7 +20,7 @@ export default function List({ params, onPagination }) {
   }, [params]);
 
   return (
-    <div class="mb-8">
+    <div className="mb-8">
       <div className="grid grid-flow-row auto-rows-max md:grid-cols-2 gap-8 my-8">
         {data.items.map(property => <Entry key={property.key} data={property.data} />)}
       </div>

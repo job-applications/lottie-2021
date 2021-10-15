@@ -1,20 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as config from '../../config';
 
 const getParsedFloat = input => Number.isNaN(Number.parseFloat(input)) ? null : Number.parseFloat(input);
 
-export default function SearchForm({ onSubmit }) {
+const parseRatings = input => {
+  const ratings = typeof input === 'string' ? input.split(',') : [];
+  return config.ratings.map(value => ratings.includes(value));
+}
+
+export default function SearchForm({ onSubmit, initial }) {
   const [green, setGreen] = useState(false);
   const [region, setRegion] = useState('');
 
-  const [ratings, setRatings] = useState(
-    new Array(config.ratings.length).fill(false)
-  );
+  const [ratings, setRatings] = useState(parseRatings());
 
   const [price, setPrice] = useState({
     from: '',
     to: '',
   });
+
+  useEffect(() => {
+    setGreen(!!initial.greenerChoice)
+    setRatings(parseRatings(initial.cqcRating))
+    setPrice({
+      from: getParsedFloat(initial.minPrice) || '',
+      to: getParsedFloat(initial.maxPrice) || '',
+    });
+    setRegion(config.regions.includes(initial.region) ? initial.region : '')
+  }, [initial])
 
   const handleRatingChange = (position) => {
     const updatedCheckedState = ratings.map((item, index) =>

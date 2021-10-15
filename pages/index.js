@@ -39,7 +39,7 @@ export default function Home() {
           Search Results
         </h1>
 
-        <Search onSubmit={handleSubmit} />
+        <Search onSubmit={handleSubmit} initial={router.query} />
 
         <h2 className="text-3xl font-bold mt-10">
           List of Properties
