@@ -27,13 +27,13 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 max-w-7xl">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 max-w-7xl m-auto">
       <Head>
         <title>Lottie - Search Results</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col justify-center w-full flex-1 px-20">
+      <main className="flex flex-col justify-center w-full flex-1 px-8 md:px-20">
 
         <h1 className="text-6xl font-bold">
           Search Results

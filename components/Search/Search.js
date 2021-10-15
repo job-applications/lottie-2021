@@ -70,8 +70,8 @@ export default function SearchForm({ onSubmit, initial }) {
         Search Form
       </h2>
 
-      <form onSubmit={handleSubmit} className="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
-        <div className="w-full px-2 md:w-1/4">
+      <form onSubmit={handleSubmit} className="grid gap-x-4 gap-y-4 md:grid-cols-2 lg:grid-cols-4">
+        <div>
           <h3 className="text-xl font-bold mb-2">Location</h3>
 
           <label className="block">Region
@@ -82,7 +82,7 @@ export default function SearchForm({ onSubmit, initial }) {
           </label>
         </div>
 
-        <div className="w-full px-2 md:w-1/4">
+        <div>
           <h3 className="text-xl font-bold mb-2">Price</h3>
 
           <div className="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
@@ -99,7 +99,7 @@ export default function SearchForm({ onSubmit, initial }) {
           </div>
         </div>
 
-        <div className="w-full px-2 md:w-1/4">
+        <div>
           <h3 className="text-xl font-bold mb-2">Property Rating</h3>
           {config.ratings.map((rating, position) => (
             <label className="text-gray-700 block" key={position}>
@@ -108,7 +108,7 @@ export default function SearchForm({ onSubmit, initial }) {
           ))}
         </div>
 
-        <div className="w-full px-2 md:w-1/4">
+        <div>
           <h3 className="text-xl font-bold mb-2">Other</h3>
 
           <label className="text-gray-700">
@@ -117,8 +117,8 @@ export default function SearchForm({ onSubmit, initial }) {
           </label>
         </div>
 
-        <div className="w-full">
-          <input className="h-12 px-6 m-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit" />
+        <div>
+          <input className="h-12 px-6 my-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit" />
         </div>
       </form>
     </div>
