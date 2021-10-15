@@ -118,7 +118,7 @@ export default function SearchForm({ onSubmit, initial }) {
         </div>
 
         <div>
-          <input className="h-12 px-6 my-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit" />
+          <input className="cursor-pointer h-12 px-6 my-2 text-lg text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800" type="submit" />
         </div>
       </form>
     </div>
